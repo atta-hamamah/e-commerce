@@ -1,3 +1,4 @@
+import Image from "next/image";
 interface Product {
   id: number;
   title: string;
@@ -34,10 +35,8 @@ interface Product {
 type Data = {
   products: Product[]
 }
-
-
 export default async function page() {
-  const url = `https://dummyjson.com/products/d`
+  const url = `https://dummyjson.com/products/?limit=30&skip=0&delay=1000`
   let data: Data | null = null
   try {
     const response = await fetch(url);
@@ -46,19 +45,25 @@ export default async function page() {
     console.error('Error fetching data:', error);
   }
   return (
-    <main className=' bg-white w-full h-full'>
+    <main className=' p-8 bg-white h-full flex flex-wrap items-center justify-between gap-6'>
       {data ?
-        (
-          <div>
-            {data.products.map((product) => {
-              return (
-                <p key={product.id}>
-                  {product.title}
-                </p>
-              )
-            })}
-          </div>
-        )
+        data.products.map((product) => {
+          return (
+            <div
+              className=" w-56 shadow-md "
+              key={product.id}
+            >
+              <Image
+                src={product.images[0]}
+                width={9999}
+                height={9999}
+                alt='product'
+                className='w-full h-56'
+              />
+              {product.title}
+            </div>
+          )
+        })
         :
         <p>Cant get Data Try again later</p>
       }

@@ -1,6 +1,5 @@
 import ProductCard from "@/components/ProductCard";
 import { Metadata } from "next";
-
 interface Product {
   id: number;
   title: string;
@@ -33,18 +32,17 @@ interface Product {
   images: string[];
   thumbnail: string;
 }
-
 type Data = {
   products: Product[]
 }
 
 export const metadata: Metadata = {
-  title: "all products",
-  description: "best online market",
+  title: "best products",
+  description: "rated more than 4.8",
 }
 
 export default async function page() {
-  const url = `https://dummyjson.com/products/?limit=30&skip=0&delay=2000`
+  const url = `https://dummyjson.com/products/?delay=2000&limit=0`
   let data: Data | null = null
   try {
     const response = await fetch(url);
@@ -52,10 +50,12 @@ export default async function page() {
   } catch (error) {
     console.error('Error fetching data:', error);
   }
+  const bestProducts = data?.products.filter(e => e.rating > 4.8) ?? []
+  console.log(bestProducts)
   return (
-    <main className=' p-8 bg-white h-full grid grid-cols-6 gap-6'>
+    <main className=' p-8 bg-white h-full grid grid-cols-6 gap-x-4 gap-y-16'>
       {data ?
-        data.products.map((product) => {
+        bestProducts.map((product) => {
           return (
             <ProductCard
               key={product.id}

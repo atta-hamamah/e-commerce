@@ -1,15 +1,20 @@
+'use client'
 import Image from 'next/image'
 import Link from 'next/link'
 import { MdOutlineShoppingCart } from "react-icons/md";
 import { FaHeartCircleCheck } from "react-icons/fa6";
+import { usePathname } from 'next/navigation';
 
 function Nav() {
+    const pathname = usePathname();
+    const path = pathname.split('/')[1]
+
     const headers = [
         'Home',
         'Products',
         'Best Products',
         'Best Offers',
-        'Best Seller',
+        'New'
     ]
     return (
         <main className=' h-24 px-8 mt-2 flex items-center justify-between border-b-2 border-[#1d4671]'>
@@ -21,32 +26,41 @@ function Nav() {
                 className=' w-24 h-24'
             />
             <div className='flex flex-nowrap gap-x-8 font-semibold text-xl text-gray-500  '>
-                {
-                    headers.map(header => {
-                        const headArr = header.split(' ')
-                        const linkRef = headArr.length > 1
-                            ?
-                            headArr[1].toLocaleLowerCase()
-                            :
-                            '/'
-                        return (
-                            <Link href={linkRef} key={header}>
-                                <div className={` pb-2 border-b-4 ${true ? 'border-[#017cc4]' : ''} `}>
-                                    <p className={` ${true ? 'text-[#017cc4]' : ''} `}>
-                                        {header}
-                                    </p>
-                                </div>
-                            </Link>
-                        )
-                    })
-                }
+                <Link href={'/'} >
+                    <div className={` pb-2 border-b-4 ${path === '' ? 'border-[#017cc4]' : ''} `}>
+                        <p className={` ${path === '' ? 'text-[#017cc4]' : ''} `}>
+                            Home
+                        </p>
+                    </div>
+                </Link>
+                <Link href={'/best'} >
+                    <div className={` pb-2 border-b-4 ${path === 'best' ? 'border-[#017cc4]' : ''} `}>
+                        <p className={` ${path === 'best' ? 'text-[#017cc4]' : ''} `}>
+                            Best Products
+                        </p>
+                    </div>
+                </Link>
+                <Link href={'/offers'} >
+                    <div className={` pb-2 border-b-4 ${path === 'offers' ? 'border-[#017cc4]' : ''} `}>
+                        <p className={` ${path === 'offers' ? 'text-[#017cc4]' : ''} `}>
+                            Best Offers
+                        </p>
+                    </div>
+                </Link>
+                <Link href={'/new'} >
+                    <div className={` pb-2 border-b-4 ${path === 'new' ? 'border-[#017cc4]' : ''} `}>
+                        <p className={` ${path === 'new' ? 'text-[#017cc4]' : ''} `}>
+                            New Products
+                        </p>
+                    </div>
+                </Link>
             </div>
             <div className=' flex items-center gap-4 text-4xl text-gray-500'>
                 <Link href={'favorite'}>
-                    <FaHeartCircleCheck className={` ${true ? ' text-[#017cc4]' : ''}`} />
+                    <FaHeartCircleCheck className={` ${path === 'favorite' ? ' text-[#017cc4]' : ''}`} />
                 </Link>
                 <Link href={'cart'}>
-                    <MdOutlineShoppingCart className={` ${true ? ' text-[#017cc4]' : ''}`} />
+                    <MdOutlineShoppingCart className={` ${path === 'cart' ? ' text-[#017cc4]' : ''}`} />
                 </Link>
             </div  >
         </main>

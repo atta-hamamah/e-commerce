@@ -1,6 +1,6 @@
 import ProductCard from "@/components/ProductCard";
 import { Metadata } from "next";
-
+import Categories from "@/components/Categories";
 interface Product {
   id: number;
   title: string;
@@ -42,9 +42,15 @@ export const metadata: Metadata = {
   title: "all products",
   description: "best online market",
 }
+type SearchParams = {
+  category: string
+  search: string
+  page: string
+}
+export default async function page({ searchParams: { category, search, page } }:
+  { searchParams: SearchParams }) {
 
-export default async function page() {
-  const url = `https://dummyjson.com/products/?limit=30&skip=0&delay=2000`
+  const url = `https://dummyjson.com/products/?limit=0&delay=2000`
   let data: Data | null = null
   try {
     const response = await fetch(url);
@@ -52,8 +58,26 @@ export default async function page() {
   } catch (error) {
     console.error('Error fetching data:', error);
   }
+  if (category && data?.products) {
+    data.products = data.products.filter(e => e.category === category)
+  }
+  if (search && data?.products) {
+    data.products = data.products.filter(e => (
+      e.title.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    ))
+  }
+  if (page && data?.products) {
+    const pageNum = parseInt(page);
+    const pageSize = 30
+    const startIndex = (pageNum - 1) * pageSize;
+    const endIndex = pageNum * pageSize;
+    data.products = data?.products.slice(startIndex, endIndex);
+  }
   return (
-    <main className=' p-8 bg-white h-full grid grid-cols-6 gap-6'>
+    <main className=' relative p-8 bg-white h-full grid grid-cols-6 gap-6'>
+      <div className=" col-span-6 fixed top-28 left-8 items-center justify-between">
+        <Categories />
+      </div>
       {data ?
         data.products.map((product) => {
           return (

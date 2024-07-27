@@ -51,7 +51,6 @@ export default async function page() {
     console.error('Error fetching data:', error);
   }
   const bestProducts = data?.products.filter(e => e.rating > 4.8) ?? []
-  console.log(bestProducts)
   return (
     <main className=' p-8 bg-white h-full grid grid-cols-6 gap-x-4 gap-y-16'>
       {data ?

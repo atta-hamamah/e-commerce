@@ -1,6 +1,7 @@
 import ProductCard from "@/components/ProductCard";
 import { Metadata } from "next";
 import Categories from "@/components/Categories";
+import Search from "@/components/Search";
 interface Product {
   id: number;
   title: string;
@@ -74,9 +75,10 @@ export default async function page({ searchParams: { category, search, page } }:
     data.products = data?.products.slice(startIndex, endIndex);
   }
   return (
-    <main className=' relative p-8 bg-white h-full grid grid-cols-6 gap-6'>
-      <div className=" col-span-6 fixed top-28 left-8 items-center justify-between">
+    <main className=' mt-8 relative p-8 bg-white h-full grid grid-cols-6 gap-6'>
+      <div className=" px-8 col-span-6 fixed top-28 left-0 flex w-full  justify-between">
         <Categories />
+        <Search />
       </div>
       {data ?
         data.products.map((product) => {

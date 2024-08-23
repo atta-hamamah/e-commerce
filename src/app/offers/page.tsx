@@ -2,38 +2,9 @@ import Categories from "@/components/Categories";
 import ProductCard from "@/components/ProductCard";
 import Search from "@/components/Search";
 import { Metadata } from "next";
-interface Product {
-  id: number;
-  title: string;
-  description: string;
-  category: string;
-  price: number;
-  discountPercentage?: number;
-  rating: number;
-  stock: number;
-  tags: string[];
-  sku: string;
-  weight: number;
-  dimensions: {
-    width: number;
-    height: number;
-    depth: number;
-  };
-  warrantyInformation: string;
-  shippingInformation: string;
-  availabilityStatus: string;
-  reviews: any[];
-  returnPolicy: string;
-  minimumOrderQuantity: number;
-  meta: {
-    createdAt: string;
-    updatedAt: string;
-    barcode: string;
-    qrCode: string;
-  };
-  images: string[];
-  thumbnail: string;
-}
+import { Product } from "@/types";
+import { MdAlignHorizontalLeft, MdAlignHorizontalRight } from "react-icons/md";
+
 type Data = {
   products: Product[]
 }
@@ -73,12 +44,23 @@ export default async function page({ searchParams: { category, search, page } }:
     const endIndex = pageNum * pageSize;
     data.products = data?.products.slice(startIndex, endIndex);
   }
-  const bestProducts = data?.products.filter(e => e.rating > 4.8) ?? []
+  const bestProducts = data?.products.filter(e => {
+    return (
+      e.discountPercentage && (e.discountPercentage > 18)
+    )
+  }
+  ) ?? []
 
   return (
     <main className=' mt-8 p-8 bg-white h-full grid grid-cols-6 gap-x-4 gap-y-16'>
       <div className=" px-8 col-span-6 fixed top-28 left-0 flex w-full  justify-between">
         <Categories />
+        <div className=" rounded-full bg-white p-1 h-fit w-fit flex gap-2 items-center justify-center text-xl font-semibold ">
+          <MdAlignHorizontalRight className=" text-[#1d4671]" />
+          <p className=" text-gray-600">Products with discount more than </p>
+          <span className="text-green-400"> 18 %</span>
+          <MdAlignHorizontalLeft className=" text-[#1d4671]" />
+        </div>
         <Search />
       </div>
       {data ?

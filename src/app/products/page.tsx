@@ -19,7 +19,7 @@ type SearchParams = {
 export default async function page({ searchParams: { category, search, page } }:
   { searchParams: SearchParams }) {
 
-  const url = `https://dummyjson.com/products/?limit=0&delay=2000`
+  const url = `https://dummyjson.com/products/?limit=0&delay=1000`
   let data: Data | null = null
   try {
     const response = await fetch(url);
@@ -42,10 +42,10 @@ export default async function page({ searchParams: { category, search, page } }:
     const endIndex = pageNum * pageSize;
     data.products = data?.products.slice(startIndex, endIndex);
   }
-  console.log(data?.products[0].meta)
+  console.log(data?.products)
   return (
     <main className=' mt-8 relative p-8 bg-white h-full grid grid-cols-6 gap-6'>
-      <div className=" px-8 col-span-6 fixed top-28 left-0 flex w-full  justify-between">
+      <div className=" px-8 col-span-6 fixed top-28 left-0 flex w-full justify-between ">
         <Categories />
         <Search />
       </div>

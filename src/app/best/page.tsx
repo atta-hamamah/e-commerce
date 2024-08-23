@@ -3,7 +3,7 @@ import ProductCard from "@/components/ProductCard";
 import Search from "@/components/Search";
 import { Metadata } from "next";
 import { Product } from '../../types'
-
+import { MdAlignHorizontalRight, MdAlignHorizontalLeft } from "react-icons/md";
 
 type Data = {
   products: Product[]
@@ -50,6 +50,12 @@ export default async function page({ searchParams: { category, search, page } }:
     <main className=' mt-8 p-8 bg-white h-full grid grid-cols-6 gap-x-4 gap-y-16'>
       <div className=" px-8 col-span-6 fixed top-28 left-0 flex w-full  justify-between">
         <Categories />
+        <div className=" bg-white rounded-full h-fit w-fit flex gap-2 items-center justify-center text-xl font-semibold ">
+          <MdAlignHorizontalRight className=" text-[#1d4671]" />
+          <p className=" text-gray-600">Products Rated more than</p>
+          <span className="text-[#FFD700]">4,8</span>
+          <MdAlignHorizontalLeft className=" text-[#1d4671]" />
+        </div>
         <Search />
       </div>
       {data ?

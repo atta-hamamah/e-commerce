@@ -72,7 +72,6 @@ function ProductCard({ product }: {
                     </div>
                 </div>
             </Link>
-
             <CardButtons product={product} />
         </main>
     )

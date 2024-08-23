@@ -31,13 +31,6 @@ export default function Home() {
           Best Offers
         </p>
       </Link>
-      <Link
-        className=" h-[75%] py-2 border-y-4 border-transparent hover:z-10 hover:border-t-blue-500 hover:border-b-[#1d4671] hover:scale-125 -skew-x-12 duration-300 "
-        href='new'>
-        <p className=" flex items-center justify-center w-52 h-full hover:shadow-md hover:shadow-[#1d4671] bg-[#1d4671] hover:bg-[#366da7] font-semibold text-white text-2xl duration-300">
-          New
-        </p>
-      </Link>
     </main >
   )
 

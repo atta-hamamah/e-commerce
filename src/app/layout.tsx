@@ -1,3 +1,4 @@
+import { ProductProvider } from '../app/context/ProductContext';
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
@@ -20,7 +21,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <Nav />
         <div className="!min-h-[calc(100vh-360px)]">
-          {children}
+          <ProductProvider>
+            {children}
+          </ProductProvider>
         </div>
         <Footer />
       </body>

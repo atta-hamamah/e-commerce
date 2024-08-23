@@ -46,17 +46,10 @@ function Nav() {
                         </p>
                     </div>
                 </Link>
-                <Link href={'/new'} >
-                    <div className={` pb-2 border-b-4 ${path === 'new' ? 'border-[#017cc4]' : 'border-transparent'} `}>
-                        <p className={` ${path === 'new' ? 'text-[#017cc4]' : ''} `}>
-                            New Products
-                        </p>
-                    </div>
-                </Link>
             </div>
             <div className=' flex items-center gap-4 text-4xl text-gray-500'>
-                <Link href={'favorite'}>
-                    <FaHeartCircleCheck className={` ${path === 'favorite' ? ' text-[#017cc4]' : ''}`} />
+                <Link href={'favorites'}>
+                    <FaHeartCircleCheck className={` ${path === 'favorites' ? ' text-[#017cc4]' : ''}`} />
                 </Link>
                 <Link href={'cart'}>
                     <MdOutlineShoppingCart className={` ${path === 'cart' ? ' text-[#017cc4]' : ''}`} />

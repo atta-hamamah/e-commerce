@@ -20,28 +20,28 @@ function Nav() {
             <div className='flex flex-nowrap gap-x-8 font-semibold text-xl text-gray-300  '>
                 <Link href={'/'} >
                     <div className={` pb-2 border-b-4 ${path === '' ? 'border-[#017cc4]' : ' border-transparent'} `}>
-                        <p className={` ${path === '' ? 'text-[#017cc4]' : ''} hover:text-blue-300 duration-200 `}>
+                        <p className={` ${path === '' ? 'text-[#017cc4]' : 'hover:text-blue-300 '} duration-200 `}>
                             Home
                         </p>
                     </div>
                 </Link>
                 <Link href={'/products?page=1'} >
                     <div className={` pb-2 border-b-4 ${path === 'products' ? 'border-[#017cc4]' : 'border-transparent'} `}>
-                        <p className={` ${path === 'products' ? 'text-[#017cc4]' : ''} hover:text-blue-300 duration-200  `}>
+                        <p className={` ${path === 'products' ? 'text-[#017cc4]' : ' hover:text-blue-300'}  duration-200  `}>
                             Products
                         </p>
                     </div>
                 </Link>
                 <Link href={'/best'} >
                     <div className={` pb-2 border-b-4 ${path === 'best' ? 'border-[#017cc4]' : 'border-transparent'} `}>
-                        <p className={` ${path === 'best' ? 'text-[#017cc4]' : ''} hover:text-blue-300 duration-200  `}>
+                        <p className={` ${path === 'best' ? 'text-[#017cc4]' : 'hover:text-blue-300 '} duration-200  `}>
                             Best Products
                         </p>
                     </div>
                 </Link>
                 <Link href={'/offers'} >
                     <div className={` pb-2 border-b-4 ${path === 'offers' ? 'border-[#017cc4]' : 'border-transparent'} `}>
-                        <p className={` ${path === 'offers' ? 'text-[#017cc4]' : ''} hover:text-blue-300 duration-200  `}>
+                        <p className={` ${path === 'offers' ? 'text-[#017cc4]' : ' hover:text-blue-300'}  duration-200  `}>
                             Best Offers
                         </p>
                     </div>
@@ -49,10 +49,10 @@ function Nav() {
             </div>
             <div className=' flex items-center gap-4 text-4xl text-gray-500'>
                 <Link href={'favorites'}>
-                    <FaHeartCircleCheck className={` ${path === 'favorites' ? ' text-[#017cc4]' : ''} hover:text-blue-300 duration-200 `} />
+                    <FaHeartCircleCheck className={` ${path === 'favorites' ? ' text-[#017cc4]' : ' hover:text-blue-300'}  duration-200 `} />
                 </Link>
                 <Link href={'cart'}>
-                    <MdOutlineShoppingCart className={` ${path === 'cart' ? ' text-[#017cc4]' : ''} hover:text-blue-300 duration-200 `} />
+                    <MdOutlineShoppingCart className={` ${path === 'cart' ? ' text-[#017cc4]' : 'hover:text-blue-300'}  duration-200 `} />
                 </Link>
             </div  >
         </main>

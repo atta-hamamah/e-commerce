@@ -26,14 +26,14 @@ function CardButtons({ product }: { product: Product }) {
         <main className='mt-6 text-white text-sm flex items-center justify-between'>
             <button
                 onClick={handleAddToCart}
-                className={`hover:-skew-x-12 hover:bg-blue-400 duration-150 w-[120px] ${isInCart ? 'bg-green-500' : 'bg-blue-500'} p-2 flex items-center justify-center gap-0.5`}
+                className={`hover:-skew-x-12  duration-150 w-[120px] ${isInCart ? 'bg-green-500' : 'bg-blue-500 hover:bg-blue-400'} p-2 flex items-center justify-center gap-0.5`}
             >
                 <MdOutlineShoppingCart className='text-2xl' />
                 {isInCart ? 'In Cart' : 'Add to Cart'}
             </button>
             <button
                 onClick={handleAddToFavorites}
-                className={`hover:-skew-x-12 hover:bg-blue-400 duration-150 w-[120px] ${isInFavorites ? 'bg-red-500' : 'bg-blue-500'} p-2 flex items-center justify-center gap-0.5`}
+                className={`hover:-skew-x-12 duration-150 w-[120px] ${isInFavorites ? 'bg-red-500' : 'bg-blue-500  hover:bg-blue-400'} p-2 flex items-center justify-center gap-0.5`}
             >
                 <FaHeartCircleCheck className='text-2xl' />
                 {isInFavorites ? 'Favorited' : 'Favorite'}

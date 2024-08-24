@@ -1,7 +1,6 @@
 'use client'
 import React from 'react'
 import { useProductContext } from '../app/context/ProductContext'
-import Image from 'next/image'
 
 function Favorites() {
     const { cart, favorites, removeFromFavorites, addToCart } = useProductContext()
@@ -26,13 +25,13 @@ function Favorites() {
                             <div className="flex justify-between w-full">
                                 <button
                                     onClick={() => addToCart(product)}
-                                    className={`  text-white px-4 py-2 rounded ${isInCart ? 'bg-green-500' : 'bg-blue-500'} hover:bg-blue-600 `}
+                                    className={`  hover:-skew-x-12 duration-150  text-white px-4 py-2  ${isInCart ? 'bg-green-500' : 'bg-blue-500 hover:bg-blue-600'}  `}
                                 >
-                                    {isInCart ? 'Add to Cart' : 'Added to Cart'}
+                                    {isInCart ? 'Added to Cart' : 'Add to Cart'}
                                 </button>
                                 <button
                                     onClick={() => removeFromFavorites(product.id)}
-                                    className="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+                                    className="bg-red-500  hover:-skew-x-12 duration-150  text-white px-4 py-2 hover:bg-red-600"
                                 >
                                     Remove
                                 </button>

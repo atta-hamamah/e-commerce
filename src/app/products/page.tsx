@@ -58,8 +58,8 @@ export default async function page({ searchParams: { category, search, page = "1
   const paginatedProducts = filteredProducts.slice(startIndex, endIndex);
 
   return (
-    <main className='mt-8 relative p-8 bg-white h-full grid grid-cols-6 gap-6'>
-      <div className="px-8 col-span-6 fixed top-28 left-0 flex w-full justify-between ">
+    <main className='mt-8 relative p-8 bg-white h-full grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6'>
+      <div className="px-8 col-span-full fixed top-28 left-0 flex w-full justify-between ">
         <Categories />
         <Search />
       </div>
@@ -71,7 +71,7 @@ export default async function page({ searchParams: { category, search, page = "1
               product={product}
             />
           ))}
-          <div className="col-span-6 mt-8">
+          <div className=" col-span-full mt-8">
             <Pagination
               currentPage={currentPage}
               totalPages={totalPages}

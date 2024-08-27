@@ -35,7 +35,7 @@ function Search() {
         <form
             onSubmit={handleSearch}
             style={{ direction: 'rtl' }}
-            className=" relative bg-[#1d4671] overflow-hidden py-2 px-3 w-40 h-fit hover:w-64 duration-300">
+            className=" relative bg-[#1d4671] overflow-hidden py-2 px-3 h-fit w-32 md:w-40 sm:hover:w-64 duration-300">
             <div
                 style={{ direction: 'ltr' }}
                 className="flex items-center">

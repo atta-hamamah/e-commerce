@@ -34,13 +34,13 @@ function Categories() {
     }
 
     return (
-        <main className="group relative bg-[#1d4671] overflow-hidden hover:overflow-y-auto duration-300 py-2 px-3 w-40 h-10 hover:w-64 hover:h-[480px]">
-            <p className="flex items-center gap-1 sticky top-0 text-white font-semibold bg-[#1d4671]">
+        <main className="group text-xs sm:text-sm md:text-base relative bg-[#1d4671] overflow-hidden hover:overflow-y-auto duration-300 pb-2 px-3 w-32 md:w-40 h-10 sm:hover:w-64 hover:h-[480px]">
+            <p className="flex h-10 justify-center items-center gap-1 sticky top-0 text-white font-semibold bg-[#1d4671]">
                 <FaList />Categories <FaAngleDoubleRight className="text-lg mx-1 group-hover:rotate-90 duration-300" />
             </p>
             {categories ?
                 (
-                    <div className="pl-4">
+                    <div className="sm:pl-4">
                         {categories.map((category, index) => (
                             <div key={index} onClick={() => handleCategoryClick(category)}>
                                 <p className="w-[90%] text-gray-300 mt-1 hover:-skew-x-12 hover:bg-blue-500 hover:text-white hover:font-semibold hover:scale-110 cursor-pointer">

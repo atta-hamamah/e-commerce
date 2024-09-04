@@ -12,11 +12,9 @@ async function getProductData(id: number): Promise<Product> {
 
 export default async function ProductPage({ params }: { params: { id: number } }) {
     const product = await getProductData(params.id)
-
     if (!product) {
         return <Loading />
     }
-
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

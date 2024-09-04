@@ -13,8 +13,9 @@ export default function AddToCartButton({ product }: { product: Product }) {
 
     return (
         <button
+            disabled={isInCart}
             onClick={handleAddToCart}
-            className={`mt-4 ${isInCart ? 'bg-green-500' : 'bg-blue-500 hover:bg-blue-700'} text-white font-bold py-2 px-4 rounded`}
+            className={`mt-4 ${isInCart ? 'bg-green-500' : 'bg-blue-500 hover:bg-blue-700'} hover:-skew-x-12  text-white font-bold py-2 px-4 `}
         >
             {isInCart ? 'Added to Cart' : 'Add to Cart'}
         </button>

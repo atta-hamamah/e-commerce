@@ -1,10 +1,7 @@
-'use client'
-
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Product } from '../../../types'
-import { useProductContext } from '../../context/ProductContext'
+import AddToCartButton from '@/components/AddToCartButton'
 import Loading from '../../loading'
-
 async function getProductData(id: number): Promise<Product> {
     const response = await fetch(`https://dummyjson.com/products/${id}`)
     if (!response.ok) {
@@ -13,29 +10,13 @@ async function getProductData(id: number): Promise<Product> {
     return response.json()
 }
 
-export default function ProductPage({ params }: { params: { id: number } }) {
-    const [product, setProduct] = useState<Product | null>(null)
-    const { addToCart, cart } = useProductContext()
-    const isInCart = cart.some(item => item.id === product?.id);
-    useEffect(() => {
-        const fetchProduct = async () => {
-            try {
-                const fetchedProduct = await getProductData(params.id)
-                setProduct(fetchedProduct)
-            } catch (error) {
-                console.error('Error fetching product:', error)
-            }
-        }
-        fetchProduct()
-    }, [params.id])
+export default async function ProductPage({ params }: { params: { id: number } }) {
+    const product = await getProductData(params.id)
 
     if (!product) {
         return <Loading />
     }
 
-    const handleAddToCart = () => {
-        addToCart(product)
-    }
     return (
         <div className="container mx-auto px-4 py-8">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -92,12 +73,7 @@ export default function ProductPage({ params }: { params: { id: number } }) {
                     <div className="mb-4">
                         <span className="font-semibold">Return Policy:</span> {product.returnPolicy}
                     </div>
-                    <button
-                        onClick={handleAddToCart}
-                        className={` mt-4 ${isInCart ? 'bg-green-500' : 'bg-blue-500 hover:bg-blue-700'}   text-white font-bold py-2 px-4 rounded `}
-                    >
-                        {isInCart ? 'Added to Cart' : 'Add to Cart'}
-                    </button>
+                    <AddToCartButton product={product} />
                 </div>
             </div>
         </div>

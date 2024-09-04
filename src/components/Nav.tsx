@@ -57,10 +57,10 @@ function Nav() {
                         </p>
                     </Link>
                     <div className=' flex items-center gap-4 text-4xl text-gray-500 mb-2'>
-                        <Link href={'favorites'}>
+                        <Link href={'/favorites'}>
                             <FaHeartCircleCheck className={` ${path === 'favorites' ? ' text-[#017cc4]' : ' hover:text-blue-300'}  duration-200 `} />
                         </Link>
-                        <Link href={'cart'}>
+                        <Link href={'/cart'}>
                             <MdOutlineShoppingCart className={` ${path === 'cart' ? ' text-[#017cc4]' : 'hover:text-blue-300'}  duration-200 `} />
                         </Link>
                     </div  >
@@ -99,10 +99,10 @@ function Nav() {
                     </Link>
                 </div>
                 <div className=' flex items-center gap-4 text-4xl text-gray-500'>
-                    <Link href={'favorites'}>
+                    <Link href={'/favorites'}>
                         <FaHeartCircleCheck className={` ${path === 'favorites' ? ' text-[#017cc4]' : ' hover:text-blue-300'}  duration-200 `} />
                     </Link>
-                    <Link href={'cart'}>
+                    <Link href={'/cart'}>
                         <MdOutlineShoppingCart className={` ${path === 'cart' ? ' text-[#017cc4]' : 'hover:text-blue-300'}  duration-200 `} />
                     </Link>
                 </div  >

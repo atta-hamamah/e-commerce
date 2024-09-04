@@ -64,8 +64,9 @@ export default async function page({ searchParams: { category, search, page = '1
         <Categories />
         <div className="rounded-full bg-white p-1 h-fit w-fit flex gap-2 items-center justify-center text-xl font-semibold">
           <MdAlignHorizontalRight className="text-[#1d4671]" />
-          <p className="text-gray-600">Products with discount more than</p>
+          <p className="text-gray-600">More than</p>
           <span className="text-green-400">18%</span>
+          <span className="text-green-400">discounts</span>
           <MdAlignHorizontalLeft className="text-[#1d4671]" />
         </div>
         <Search />

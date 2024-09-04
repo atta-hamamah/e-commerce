@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import { Product } from '../../../types'
 import { useProductContext } from '../../context/ProductContext'
+import Loading from '../../loading'
 
 async function getProductData(id: number): Promise<Product> {
     const response = await fetch(`https://dummyjson.com/products/${id}`)
@@ -29,7 +30,7 @@ export default function ProductPage({ params }: { params: { id: number } }) {
     }, [params.id])
 
     if (!product) {
-        return <div>Loading...</div>
+        return <Loading />
     }
 
     const handleAddToCart = () => {

@@ -56,12 +56,14 @@ function Cart() {
             alert('Please enter a valid 14-digit card number.')
         }
     }
-    if (isCheckoutModalOpen) {
-        document.body.classList.add('overflow-hidden');
-    } else {
-        document.body.classList.remove('overflow-hidden');
+    useEffect(() => {
+        if (isCheckoutModalOpen) {
+            document.body.classList.add('overflow-hidden');
+        } else {
+            document.body.classList.remove('overflow-hidden');
+        }
     }
-
+        , [isCheckoutModalOpen])
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-3xl font-bold mb-4">Your Cart</h1>

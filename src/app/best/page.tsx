@@ -61,7 +61,7 @@ export default async function page({ searchParams: { category, search, page = '1
 
   return (
     <main className='mt-8 relative p-8 bg-white h-full grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6'>
-      <div className="px-8 col-span-6 fixed top-28 left-0 flex w-full justify-between">
+      <div className="px-8 col-span-full fixed top-28 left-0 flex w-full justify-between">
         <Categories />
         <div className="bg-white rounded-full h-fit w-fit flex gap-2 items-center justify-center text-xs sm:text-xl font-semibold ">
           <MdAlignHorizontalRight className="text-[#1d4671]" />

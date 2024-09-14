@@ -1,4 +1,4 @@
-'use client'
+"use client"
 import React, { useState, useEffect } from 'react'
 import { useProductContext } from '../app/context/ProductContext'
 import { Product } from '@/types'
@@ -36,12 +36,10 @@ function Cart() {
     const handleCheckout = () => {
         window.scrollTo(0, 0);
         setIsCheckoutModalOpen(true);
-        toggleScrollLock(true);
     }
 
     const handleCloseModal = () => {
         setIsCheckoutModalOpen(false);
-        toggleScrollLock(false);
     }
 
     const handleCardInfoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,17 +56,14 @@ function Cart() {
             alert('Please enter a valid 14-digit card number.')
         }
     }
-    const toggleScrollLock = (isLocked: boolean) => {
-        if (isLocked) {
+    useEffect(() => {
+        if (isCheckoutModalOpen) {
             document.body.classList.add('overflow-hidden');
         } else {
             document.body.classList.remove('overflow-hidden');
         }
-    };
-    useEffect(() => {
-        toggleScrollLock(isCheckoutModalOpen);
-        return () => toggleScrollLock(false);
-    }, [isCheckoutModalOpen]);
+    }
+        , [isCheckoutModalOpen])
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-3xl font-bold mb-4">Your Cart</h1>
@@ -116,7 +111,7 @@ function Cart() {
                         <h2 className="text-2xl font-bold">Total: ${totalPrice.toFixed(2)}</h2>
                         <button
                             onClick={handleCheckout}
-                            className="mt-4 bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600">
+                            className="mt-4 bg-blue-500 text-white px-6 py-3 hover:bg-green-600 hover: hover:-skew-x-12 ">
                             Proceed to Checkout
                         </button>
                     </div>

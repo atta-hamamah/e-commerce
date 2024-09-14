@@ -25,6 +25,7 @@ function CardButtons({ product }: { product: Product }) {
     return (
         <main className='mt-6 text-white text-sm flex items-center justify-between'>
             <button
+                disabled={isInCart}
                 onClick={handleAddToCart}
                 className={`hover:-skew-x-12  duration-150 w-[120px] ${isInCart ? 'bg-green-500' : 'bg-blue-500 hover:bg-blue-400'} p-2 flex items-center justify-center gap-0.5`}
             >
@@ -32,6 +33,7 @@ function CardButtons({ product }: { product: Product }) {
                 {isInCart ? 'In Cart' : 'Add to Cart'}
             </button>
             <button
+                disabled={isInFavorites}
                 onClick={handleAddToFavorites}
                 className={`hover:-skew-x-12 duration-150 w-[120px] ${isInFavorites ? 'bg-red-500' : 'bg-blue-500  hover:bg-blue-400'} p-2 flex items-center justify-center gap-0.5`}
             >

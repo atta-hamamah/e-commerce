@@ -1,6 +1,6 @@
 import React from 'react'
 
-function loading() {
+function Loading() {
     return (
         <main className=' h-[360px] w-full  flex items-center justify-center gap-4 '>
             <div role="status">
@@ -17,4 +17,4 @@ function loading() {
     )
 }
 
-export default loading
+export default Loading

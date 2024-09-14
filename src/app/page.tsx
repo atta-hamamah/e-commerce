@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function Home() {
 
   return (
-    <main className=' bg-white w-full h-[calc(100vh-360px)] flex flex-col md:flex-row items-center justify-center gap-2 lg:gap-8'>
+    <main className=' bg-white w-full h-[calc(100vh-296px)] flex flex-col md:flex-row items-center justify-center gap-2 lg:gap-8'>
       <Link
         className=" h-20 md:h-[75%] py-2 border-y-4 border-transparent  hover:z-10 hover:border-t-blue-500 hover:border-b-[#1d4671] hover:scale-125 -skew-x-12 duration-300 "
         href='/products?page=1'>

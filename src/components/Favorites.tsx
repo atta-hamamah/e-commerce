@@ -28,6 +28,7 @@ function Favorites() {
                                 <div className="flex justify-between w-full">
                                     <button
                                         onClick={() => addToCart(product)}
+                                        disabled={isInCart}
                                         className={`hover:-skew-x-12 duration-150 text-white px-4 py-2 ${isInCart ? 'bg-green-500' : 'bg-blue-500 hover:bg-blue-600'}`}
                                     >
                                         {isInCart ? 'Added to Cart' : 'Add to Cart'}

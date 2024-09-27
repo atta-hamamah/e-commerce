@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import Favorites from "@/components/Favorites";
 export const metadata: Metadata = {
-  title: "best products",
+  title: "favorites",
   description: "rated more than 4.8",
 }
 export default function page() {

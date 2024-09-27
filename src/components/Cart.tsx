@@ -2,10 +2,12 @@
 import React, { useState, useEffect } from 'react'
 import { useProductContext } from '../app/context/ProductContext'
 import { Product } from '@/types'
+import { useRouter } from 'next/navigation'
 
 function Cart() {
-    const { cart, removeFromCart } = useProductContext()
+    const { cart, removeFromCart, cleanCart } = useProductContext()
     const [cartWithQuantity, setCartWithQuantity] = useState<(Product & { quantity: number })[]>([])
+    const router = useRouter()
 
     useEffect(() => {
         const updatedCart = cart.map(item => ({ ...item, quantity: 1 }))
@@ -50,8 +52,10 @@ function Cart() {
     const handleSubmitPayment = (e: React.FormEvent) => {
         e.preventDefault()
         if (cardInfo.number.length === 14) {
+            cleanCart()
             alert('Payment processed successfully!')
             setIsCheckoutModalOpen(false)
+            router.push('/products?page=1')
         } else {
             alert('Please enter a valid 14-digit card number.')
         }

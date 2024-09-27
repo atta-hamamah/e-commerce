@@ -9,6 +9,7 @@ interface ProductContextType {
     removeFromFavorites: (productId: number) => void;
     addToCart: (product: Product) => void;
     removeFromCart: (productId: number) => void;
+    cleanCart: () => void;
 }
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -32,6 +33,9 @@ export function ProductProvider({ children }: { children: ReactNode }) {
     const removeFromCart = (productId: number) => {
         setCart((prev) => prev.filter((item) => item.id !== productId));
     };
+    const cleanCart = () => {
+        setCart([]);
+    };
 
     return (
         <ProductContext.Provider
@@ -42,6 +46,7 @@ export function ProductProvider({ children }: { children: ReactNode }) {
                 removeFromFavorites,
                 addToCart,
                 removeFromCart,
+                cleanCart,
             }}
         >
             {children}

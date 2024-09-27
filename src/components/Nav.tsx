@@ -15,13 +15,17 @@ function Nav() {
     return (
         <main className=' select-none sticky top-0 z-30 bg-white  h-24 px-8 mt-2 flex flex-wrap items-center justify-between border-b-2 border-[#1d4671]'>
             <div className=' grow'>
-                <Image
-                    src={'/logo.png'}
-                    width={999}
-                    height={999}
-                    alt='logo'
-                    className=' w-24 h-24'
-                />
+                <Link
+                    href={'/'}
+                >
+                    <Image
+                        src={'/logo.png'}
+                        width={999}
+                        height={999}
+                        alt='logo'
+                        className=' w-24 h-24'
+                    />
+                </Link>
             </div>
             <aside className=' relative bg-white block md:hidden '>
                 {showList ?
